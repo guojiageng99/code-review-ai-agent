@@ -1,0 +1,1 @@
+package com.codeguardian.controller; import org.springframework.stereotype.Controller; import org.springframework.web.bind.annotation.GetMapping; @Controller public class ReportHistoryPageController{@GetMapping("/reports/history") public String history(){return "reports/history";}}
