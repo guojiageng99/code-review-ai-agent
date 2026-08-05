@@ -9,6 +9,8 @@ import com.codeguardian.dto.*; import com.codeguardian.entity.ReviewTask; import
  @PostMapping("/file") public ResponseEntity<ReviewResponseDTO> file(@Valid @RequestBody ReviewRequestDTO r){return create(r,"FILE");}
  @PostMapping("/directory") public ResponseEntity<ReviewResponseDTO> directory(@Valid @RequestBody ReviewRequestDTO r){return create(r,"DIRECTORY");}
  @PostMapping("/project") public ResponseEntity<ReviewResponseDTO> project(@Valid @RequestBody ReviewRequestDTO r){return create(r,"PROJECT");}
+ @PostMapping("/directory/batch") public ResponseEntity<List<ReviewResponseDTO>> directoryBatch(@RequestParam String path){return ResponseEntity.ok(service.createDirectoryTasks(path,false));}
+ @PostMapping("/project/batch") public ResponseEntity<List<ReviewResponseDTO>> projectBatch(@RequestParam String path){return ResponseEntity.ok(service.createDirectoryTasks(path,true));}
  @GetMapping("/task/{id}") public ResponseEntity<ReviewTask> task(@PathVariable Long id){return ResponseEntity.ok(service.getTaskById(id));}
  @GetMapping("/task/{id}/findings") public ResponseEntity<List<FindingDTO>> findings(@PathVariable Long id){return ResponseEntity.ok(service.getFindingsByTaskId(id));}
  @GetMapping("/history") public ResponseEntity<Page<ReviewTask>> history(@RequestParam(required=false) String name,@RequestParam(required=false) String reviewType,@RequestParam(defaultValue="0") int page,@RequestParam(defaultValue="20") int size){return ResponseEntity.ok(tasks.findByConditions(name,reviewType,PageRequest.of(page,size,Sort.by("createdAt").descending())));}
