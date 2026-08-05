@@ -1,0 +1,1 @@
+package com.codeguardian.service.rules; import lombok.*; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class RuleDefinition{String name,description,pattern,severity,suggestion;int weight;}
