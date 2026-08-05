@@ -21,9 +21,26 @@ spring:
 server:
   port: 8080
 ai:
+  provider: ${AI_PROVIDER:QWEN}
   base-url: ${AI_BASE_URL:}
   api-key: ${AI_API_KEY:}
   model: ${AI_MODEL:gpt-3.5-turbo}
+  providers:
+    QWEN:
+      base-url: ${QWEN_BASE_URL:https://dashscope.aliyuncs.com/compatible-mode/v1}
+      api-key: ${QWEN_API_KEY:}
+      model: ${QWEN_MODEL:qwen-plus}
+      enabled: ${QWEN_ENABLED:false}
+    DEEPSEEK:
+      base-url: ${DEEPSEEK_BASE_URL:http://localhost:11434}
+      api-key: ${DEEPSEEK_API_KEY:}
+      model: ${DEEPSEEK_MODEL:deepseek-r1:8b}
+      enabled: ${DEEPSEEK_ENABLED:false}
+    OPENAI:
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      api-key: ${OPENAI_API_KEY:}
+      model: ${OPENAI_MODEL:gpt-4o-mini}
+      enabled: ${OPENAI_ENABLED:false}
 management:
   endpoints:
     web:

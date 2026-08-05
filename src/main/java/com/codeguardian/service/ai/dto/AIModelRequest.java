@@ -1,0 +1,1 @@
+package com.codeguardian.service.ai.dto; import lombok.*; import java.util.List; @Data @Builder public class AIModelRequest{String model;List<Message> messages;Double temperature;Integer maxTokens;@Data @Builder public static class Message{String role;String content;}}

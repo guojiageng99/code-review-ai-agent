@@ -1,0 +1,1 @@
+package com.codeguardian.service.ai; import com.codeguardian.service.ai.dto.*; public interface AIModelProvider{String getProviderName();AIModelResponse chat(AIModelRequest request);boolean isAvailable();}
