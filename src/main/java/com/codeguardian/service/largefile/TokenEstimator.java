@@ -1,0 +1,1 @@
+package com.codeguardian.service.largefile; import org.springframework.stereotype.Service; @Service public class TokenEstimator{public int estimate(String text){return(text==null?0:text.length()+3)/4;}}
