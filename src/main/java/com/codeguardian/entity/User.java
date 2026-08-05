@@ -1,0 +1,4 @@
+package com.codeguardian.entity;
+import jakarta.persistence.*; import lombok.*; import java.time.LocalDateTime;
+@Entity @Table(name="users") @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor
+public class User { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) private Long id; @Column(nullable=false,unique=true,length=50) private String username; @Column(nullable=false,unique=true,length=100) private String email; @Column(nullable=false,length=60) private String passwordHash; @Column(length=50) private String realName; @Column(nullable=false,length=20) @Builder.Default private String status="ACTIVE"; private LocalDateTime lastLoginAt; @Column(length=45) private String lastLoginIp; @Column(nullable=false) private LocalDateTime createdAt; private LocalDateTime updatedAt; @PrePersist void onCreate(){if(createdAt==null)createdAt=LocalDateTime.now();if(status==null)status="ACTIVE";} @PreUpdate void onUpdate(){updatedAt=LocalDateTime.now();} }
