@@ -1,0 +1,1 @@
+package com.codeguardian.service.rag; import lombok.*; import java.util.Map; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class KnowledgeDocument{String id,title,content,solution;Map<String,String> metadata;}
