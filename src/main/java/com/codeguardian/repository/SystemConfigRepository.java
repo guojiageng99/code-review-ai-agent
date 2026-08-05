@@ -1,0 +1,1 @@
+package com.codeguardian.repository; import com.codeguardian.entity.SystemConfig; import org.springframework.data.jpa.repository.JpaRepository; public interface SystemConfigRepository extends JpaRepository<SystemConfig,String>{}
