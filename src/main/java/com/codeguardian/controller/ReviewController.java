@@ -9,6 +9,7 @@ import com.codeguardian.dto.*; import com.codeguardian.entity.ReviewTask; import
  @PostMapping("/file") public ResponseEntity<ReviewResponseDTO> file(@Valid @RequestBody ReviewRequestDTO r){return create(r,"FILE");}
  @PostMapping("/directory") public ResponseEntity<ReviewResponseDTO> directory(@Valid @RequestBody ReviewRequestDTO r){return create(r,"DIRECTORY");}
  @PostMapping("/project") public ResponseEntity<ReviewResponseDTO> project(@Valid @RequestBody ReviewRequestDTO r){return create(r,"PROJECT");}
+ @PostMapping("/git") public ResponseEntity<ReviewResponseDTO> git(@Valid @RequestBody ReviewRequestDTO r){return create(r,"GIT");}
  @PostMapping("/directory/batch") public ResponseEntity<List<ReviewResponseDTO>> directoryBatch(@RequestParam String path){return ResponseEntity.ok(service.createDirectoryTasks(path,false));}
  @PostMapping("/project/batch") public ResponseEntity<List<ReviewResponseDTO>> projectBatch(@RequestParam String path){return ResponseEntity.ok(service.createDirectoryTasks(path,true));}
  @GetMapping("/task/{id}") public ResponseEntity<ReviewTask> task(@PathVariable Long id){return ResponseEntity.ok(service.getTaskById(id));}
