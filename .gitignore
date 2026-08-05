@@ -1,5 +1,6 @@
 html/
 target/
 logs/
+uploads/
 .idea/
 *.iml

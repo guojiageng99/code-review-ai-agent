@@ -1,0 +1,1 @@
+package com.codeguardian.repository; import com.codeguardian.entity.KnowledgeFile; import org.springframework.data.jpa.repository.JpaRepository; public interface KnowledgeFileRepository extends JpaRepository<KnowledgeFile,Long>{}
