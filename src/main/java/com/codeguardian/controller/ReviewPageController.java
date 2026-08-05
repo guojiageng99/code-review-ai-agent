@@ -1,0 +1,1 @@
+package com.codeguardian.controller; import org.springframework.stereotype.Controller; import org.springframework.web.bind.annotation.*; import org.springframework.ui.Model; @Controller @RequestMapping("/review") public class ReviewPageController{@GetMapping public String page(Model model){return "review";}}

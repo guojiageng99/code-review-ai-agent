@@ -1,7 +1,9 @@
 package com.codeguardian.controller;
-import com.codeguardian.dto.*; import com.codeguardian.entity.ReviewTask; import com.codeguardian.repository.ReviewTaskRepository; import com.codeguardian.service.ReviewService; import jakarta.validation.Valid; import lombok.RequiredArgsConstructor; import org.springframework.data.domain.*; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.*; import java.util.List;
+import com.codeguardian.dto.*; import com.codeguardian.entity.ReviewTask; import com.codeguardian.repository.ReviewTaskRepository; import com.codeguardian.service.*; import jakarta.validation.Valid; import lombok.RequiredArgsConstructor; import org.springframework.data.domain.*; import org.springframework.http.ResponseEntity; import org.springframework.web.bind.annotation.*; import java.util.*;
 @RestController @RequestMapping("/api/review") @RequiredArgsConstructor @CrossOrigin(origins="*") public class ReviewController {
- private final ReviewService service; private final ReviewTaskRepository tasks;
+ private final ReviewService service; private final ReviewTaskRepository tasks; private final GitService gitService;
+ @PostMapping("/git/clone") public ResponseEntity<Map<String,Object>> cloneGit(@RequestBody ReviewRequestDTO r){try{String path=gitService.cloneRepository(r.getGitUrl(),r.getGitUsername(),r.getGitPassword()); return ResponseEntity.ok(Map.of("success",true,"localPath",path,"fileList",gitService.getFileList(path)));}catch(Exception e){return ResponseEntity.status(500).body(Map.of("success",false,"error",e.getMessage()));}}
+ @GetMapping("/git/file") public ResponseEntity<Map<String,Object>> readGit(@RequestParam String path){try{return ResponseEntity.ok(Map.of("success",true,"content",gitService.readFile(path)));}catch(Exception e){return ResponseEntity.status(500).body(Map.of("success",false,"error",e.getMessage()));}}
  private ResponseEntity<ReviewResponseDTO> create(ReviewRequestDTO r,String type){r.setReviewType(type); return ResponseEntity.ok(service.createReviewTask(r));}
  @PostMapping("/snippet") public ResponseEntity<ReviewResponseDTO> snippet(@Valid @RequestBody ReviewRequestDTO r){return create(r,"SNIPPET");}
  @PostMapping("/file") public ResponseEntity<ReviewResponseDTO> file(@Valid @RequestBody ReviewRequestDTO r){return create(r,"FILE");}
