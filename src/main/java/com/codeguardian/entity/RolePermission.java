@@ -1,0 +1,3 @@
+package com.codeguardian.entity;
+import jakarta.persistence.*; import lombok.*; import java.time.LocalDateTime;
+@Entity @Table(name="role_permissions",uniqueConstraints=@UniqueConstraint(columnNames={"role_id","permission_id"})) @Getter @Setter @Builder @NoArgsConstructor @AllArgsConstructor public class RolePermission { @Id @GeneratedValue(strategy=GenerationType.IDENTITY) Long id; @Column(name="role_id",nullable=false) Long roleId; @Column(name="permission_id",nullable=false) Long permissionId; @Column(nullable=false) LocalDateTime createdAt; @PrePersist void create(){if(createdAt==null)createdAt=LocalDateTime.now();} }

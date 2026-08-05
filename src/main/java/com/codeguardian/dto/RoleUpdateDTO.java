@@ -1,0 +1,1 @@
+package com.codeguardian.dto; import jakarta.validation.constraints.Size; import lombok.*; import java.util.List; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class RoleUpdateDTO{@Size(min=2,max=64) String name; String description; Integer status; List<String> permissionCodes;}

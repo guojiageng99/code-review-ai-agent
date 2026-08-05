@@ -1,0 +1,1 @@
+package com.codeguardian.dto; import lombok.*; import java.util.List; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class RoleDTO{Long id; String code,name,description; Integer status; List<String> permissions;}

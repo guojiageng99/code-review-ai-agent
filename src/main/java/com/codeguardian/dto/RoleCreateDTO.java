@@ -1,0 +1,1 @@
+package com.codeguardian.dto; import jakarta.validation.constraints.*; import lombok.*; import java.util.List; @Data @Builder @NoArgsConstructor @AllArgsConstructor public class RoleCreateDTO{@NotBlank @Size(min=2,max=32) String code; @NotBlank @Size(min=2,max=64) String name; String description; @Builder.Default Integer status=0; List<String> permissionCodes;}
