@@ -18,6 +18,14 @@ spring:
     console:
       enabled: true
       path: /h2-console
+  ai:
+    openai:
+      api-key: ${OPENAI_API_KEY:}
+      base-url: ${OPENAI_BASE_URL:https://api.openai.com}
+      chat:
+        options:
+          model: ${OPENAI_MODEL:gpt-4o-mini}
+          temperature: 0.3
 server:
   port: 8080
 ai:
